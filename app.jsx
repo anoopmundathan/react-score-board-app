@@ -36,7 +36,7 @@ function Player(props) {
 				<div className="player-name">
 					<h2>{props.name}</h2>
 				</div>
-				<PlayerScoreBoard/>
+				<PlayerScoreBoard initialScore={props.score}/>
 			</div>
 	);
 }
@@ -46,10 +46,12 @@ Player.propTypes = {
 }
 
 var PlayerScoreBoard = React.createClass({
-	propTypes: {},
+	propTypes: {
+		initialScore: React.PropTypes.number.isRequired
+	},
 	getInitialState: function() {
 		return {
-			score: 11
+			score: this.props.initialScore
 		}
 	},
 	incrementScore: function(e) {
