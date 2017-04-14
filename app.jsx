@@ -1,11 +1,11 @@
-function Application() {
+function Application(props) {
 	
 	// Return virtual dom element
 	return(
 		<div className="scoreboard">
 
 			<div className="heading">
-				<h1>Scoreboard - React</h1>
+				<h1>{props.title}</h1>
 			</div>
 
 				<div className="players">
@@ -112,9 +112,10 @@ function Application() {
 				</div>
 
 			</div>
+
 			</div>
 	);
 
 }
 
-ReactDOM.render(<Application/>, document.getElementById('container'));
+ReactDOM.render(<Application title="ScoreboardApp"/>, document.getElementById('container'));
