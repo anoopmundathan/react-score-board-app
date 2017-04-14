@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue";
+  color: #fafafa;
+}
+
+.scoreboard {
+  margin: 50px auto;
+  width: 50%;
+  text-align: center;
+  background: dodgerblue;
+  border-radius: 3px;
+}
+
+.player {
+  display: flex;
+  margin: 10px auto;
+  width: 90%;
+  border-radius: 5px;
+}
+
+.player-name {
+  width: 80%;
+  background: #000;
+  text-align: left;
+}
+
+.player-scoreboard {
+  width: 20%;
+  background: skyblue;
+}
+
+.player-scoreboard {
+  display: flex;
+}
+
+.player-increment {
+  background: lightgreen;
+}
+
+.player-decrement {
+  background: firebrick;
+}
+
+.player-increment,
+.player-decrement,
+.player-score {
+  padding: 10px;
+}
+
+.players-container {
+  margin-bottom: 10px;
+  background: red;
+}
+
+.player-name h2 {
+  padding-left: 20px;
+}
