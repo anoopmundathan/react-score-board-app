@@ -18,26 +18,35 @@ function Player(props) {
 				<div className="player-name">
 					<h2>{props.name}</h2>
 				</div>
-				<div className="player-scoreboard">
-					<div className="player-decrement">
-						<h2>-</h2>
-					</div>
-					<div className="player-score">
-						<h2>{props.score}</h2>
-					</div>
-					<div className="player-increment">
-						<h2>+</h2>
-					</div>
-				</div>
+				<PlayerScoreBoard score={props.score}/>
 			</div>
 	);
 }
 
 Player.propTypes = {
-	name: React.PropTypes.string.isRequired,
-	score: React.PropTypes.number.isRequired
+	name: React.PropTypes.string.isRequired
 }
 
+var PlayerScoreBoard = React.createClass({
+	propTypes: {
+		score: React.PropTypes.number.isRequired
+	},
+	render: function() {
+		return (
+				<div className="player-scoreboard">
+					<div className="player-decrement">
+						<h2>-</h2>
+					</div>
+					<div className="player-score">
+						<h2>{this.props.score}</h2>
+					</div>
+					<div className="player-increment">
+						<h2>+</h2>
+					</div>
+				</div>
+		)
+	}
+});
 
 function Application(props) {
 	
@@ -46,9 +55,9 @@ function Application(props) {
 		<div className="scoreboard">
 			<Header title={props.title}/>			
 				<div className="players">
-					<Player name="Anoop" score={10}></Player>
-					<Player name="Anvita" score={20}></Player>
-					<Player name="Neethu" score={30}></Player>
+					<Player name="Anoop" score={100}></Player>
+					<Player name="Anvita" score={200}></Player>
+					<Player name="Neethu" score={300}></Player>
 				</div>
 			</div>
 	);
