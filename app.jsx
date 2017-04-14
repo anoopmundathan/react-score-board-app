@@ -52,17 +52,28 @@ var PlayerScoreBoard = React.createClass({
 			score: 11
 		}
 	},
+	incrementScore: function(e) {
+		this.setState({
+			score: this.state.score + 1
+		});
+	},
+
+	decrementScore: function() {
+		this.setState({
+			score: this.state.score - 1
+		});
+	},
 	render: function() {
 		return (
 				<div className="player-scoreboard">
 					<div className="player-decrement">
-						<h2>-</h2>
+						<h2 onClick={this.decrementScore}>-</h2>
 					</div>
 					<div className="player-score">
 						<h2>{this.state.score}</h2>
 					</div>
 					<div className="player-increment">
-						<h2>+</h2>
+						<h2 onClick={this.incrementScore}>+</h2>
 					</div>
 				</div>
 		)
