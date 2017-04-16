@@ -16,6 +16,8 @@ var PLAYERS = [
 	}
 ];
 
+var idCounter = 4;
+
 // Stateless component
 function PlayerScoreBoard(props) {
 	return (
@@ -38,6 +40,39 @@ PlayerScoreBoard.PropTypes = {
 	onChange: React.PropTypes.func.isRequired
 }
 
+var AddPlayerForm = React.createClass({
+	propTypes: {
+		onPlayerAdd: React.PropTypes.func.isRequired
+	},
+
+	getInitialState: function() {
+		return {
+			name: ""
+		}
+	},
+	onPlayerSubmit: function(e) {
+		e.preventDefault();
+		this.props.onPlayerAdd(this.state.name);
+		this.setState({
+			name: ""
+		});
+	},
+	onPlayerChange: function(e) {
+		this.setState({
+			name: e.target.value
+		});
+	},
+	render: function() {
+		return(
+			<div>
+				<form onSubmit={this.onPlayerSubmit}>
+					<input type="text" value={this.state.name} onChange={this.onPlayerChange}/>
+					<input type="submit" value="Add Player"/>
+				</form>
+			</div>
+		);
+	}
+});
 // Stateless component
 function Stats(props) {
 	var totalPlayers = props.players.length;
@@ -125,6 +160,15 @@ var Application = React.createClass({
 		this.state.players[index].score += delta;
 		this.setState(this.state);
 	},
+	onPlayerAdd: function(name) {
+		this.state.players.push({
+			name: name,
+			score: 0,
+			id: idCounter
+		});
+		this.setState(this.state.players);
+		idCounter += 1;
+	},
 	render: function() {
 		return(
 			<div className="scoreboard">
@@ -140,6 +184,7 @@ var Application = React.createClass({
 							);
 						}.bind(this))}
 					</div>
+					<AddPlayerForm onPlayerAdd={this.onPlayerAdd}/>
 			</div>
 		); // end of return
 	}
