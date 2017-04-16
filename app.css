@@ -77,13 +77,12 @@ body {
 .player-name h2 {
   padding-left: 20px;
 }
-/*
- * Stop watch 
-**/
 
 .stopwatch-buttons {
   display: flex;
 }
+
+
 
 input[type="text"] {
   width: 80%;
