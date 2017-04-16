@@ -64,7 +64,7 @@ var AddPlayerForm = React.createClass({
 	},
 	render: function() {
 		return(
-			<div>
+			<div className="form-container">
 				<form onSubmit={this.onPlayerSubmit}>
 					<input type="text" value={this.state.name} onChange={this.onPlayerChange}/>
 					<input type="submit" value="Add Player"/>
@@ -80,18 +80,20 @@ function Stats(props) {
 		return total + player.score;
 	}, 0)
 	return(
-		<table>	
-			<tbody>
-				<tr>
-					<td>Player:</td>
-					<td>{totalPlayers}</td>
-				</tr>
-				<tr>
-					<td>Score:</td>
-					<td>{totalScore}</td>
-				</tr>
-			</tbody>
-		</table>
+		<div className="stats-container">
+			<table>	
+				<tbody>
+					<tr>
+						<td>Player:</td>
+						<td>{totalPlayers}</td>
+					</tr>
+					<tr>
+						<td>Score:</td>
+						<td>{totalScore}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	);
 }
 
@@ -105,10 +107,12 @@ function Header(props) {
 	return(
 		<div className="heading">
 			<Stats players={props.players}/>
-			<h1>{props.title}</h1>
+			<div className="title-container">
+				<h1>{props.title}</h1>
+			</div>
+				<StopWatch />
 		</div>
 	);
-	
 }
 
 Header.propTypes = {
@@ -120,9 +124,13 @@ Header.propTypes = {
 function Player(props) {
 	return(
 			<div className="player">
-				<div className="player-name">
+				<div className="player-detail">
+					<div className="player-remove">
 						<a href="#" onClick={props.onPlayerRemove}>Remove</a>
+					</div>
+					<div className="player-name">
 						<h2>{props.name}</h2>
+					</div>
 				</div>
 				<PlayerScoreBoard 
 					score={props.score}
@@ -138,6 +146,30 @@ Player.propTypes = {
 	onPlayerRemove: React.PropTypes.func.isRequired
 }
 
+// Statefull class componet
+var StopWatch = React.createClass({
+	render: function() {
+		return(
+			<div className="stopwatch-container">
+				<div className="stopwatch-heading">
+					<h3>STOP WATCH</h3>
+				</div>
+				<div className="stopwatch-counter">
+					<h3>0</h3>
+				</div>
+				<div className="stopwatch-buttons">
+					<div className="stopwatch-start">
+						<button>Start</button>
+					</div>
+					<div className="stopwatch-stop">
+						<button>Stop</button>
+					</div>
+				</div>
+			</div>
+
+		);
+	}
+});
 // Stateful class component
 var Application = React.createClass({
 	propTypes: {
