@@ -121,7 +121,8 @@ function Player(props) {
 	return(
 			<div className="player">
 				<div className="player-name">
-					<h2>{props.name}</h2>
+						<a href="#" onClick={props.onPlayerRemove}>Remove</a>
+						<h2>{props.name}</h2>
 				</div>
 				<PlayerScoreBoard 
 					score={props.score}
@@ -133,7 +134,8 @@ function Player(props) {
 
 Player.propTypes = {
 	name: React.PropTypes.string.isRequired,
-	onScoreChange: React.PropTypes.func.isRequired
+	onScoreChange: React.PropTypes.func.isRequired,
+	onPlayerRemove: React.PropTypes.func.isRequired
 }
 
 // Stateful class component
@@ -169,6 +171,10 @@ var Application = React.createClass({
 		this.setState(this.state.players);
 		idCounter += 1;
 	},
+	onPlayerRemove: function(index) {
+		this.state.players.splice(index, 1);
+		this.setState(this.state.players);
+	},
 	render: function() {
 		return(
 			<div className="scoreboard">
@@ -178,6 +184,7 @@ var Application = React.createClass({
 							return (
 								<Player 
 									onScoreChange={function(delta) {this.onScoreChange(delta, index)}.bind(this)}
+									onPlayerRemove={function() {this.onPlayerRemove(index)}.bind(this)}
 									name={player.name} 
 									score={player.score} 
 									key={player.id}/>
