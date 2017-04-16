@@ -16,6 +16,7 @@ var PLAYERS = [
 	}
 ];
 
+// Stateless component
 function PlayerScoreBoard(props) {
 	return (
 			<div className="player-scoreboard">
@@ -37,10 +38,38 @@ PlayerScoreBoard.PropTypes = {
 	onChange: React.PropTypes.func.isRequired
 }
 
+// Stateless component
+function Stats(props) {
+	var totalPlayers = props.players.length;
+	var totalScore = props.players.reduce(function(total, player) {
+		return total + player.score;
+	}, 0)
+	return(
+		<table>	
+			<tbody>
+				<tr>
+					<td>Player:</td>
+					<td>{totalPlayers}</td>
+				</tr>
+				<tr>
+					<td>Score:</td>
+					<td>{totalScore}</td>
+				</tr>
+			</tbody>
+		</table>
+	);
+}
+
+Stats.propTypes = {
+	players: React.PropTypes.array.isRequired
+}
+
+// Stateless component
 function Header(props) {
 
 	return(
 		<div className="heading">
+			<Stats players={props.players}/>
 			<h1>{props.title}</h1>
 		</div>
 	);
@@ -48,9 +77,11 @@ function Header(props) {
 }
 
 Header.propTypes = {
-	title: React.PropTypes.string.isRequired
+	title: React.PropTypes.string.isRequired,
+	players: React.PropTypes.array.isRequired
 }
 
+// Stateless component
 function Player(props) {
 	return(
 			<div className="player">
@@ -91,14 +122,13 @@ var Application = React.createClass({
 		}
 	},
 	onScoreChange: function(delta, index) {
-		console.log(delta, index);
 		this.state.players[index].score += delta;
 		this.setState(this.state);
 	},
 	render: function() {
 		return(
 			<div className="scoreboard">
-				<Header title={this.props.title}/>			
+				<Header players={this.state.players} title={this.props.title}/>			
 					<div className="players">
 						{this.state.players.map(function(player, index) {
 							return (
