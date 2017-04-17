@@ -6,16 +6,6 @@ var PLAYERS = [
 		name: "Anoop",
 		score: 123,
 		id: 1
-	},
-	{
-		name: "Stu",
-		score: 343,
-		id: 2
-	},
-	{
-		name: "Sam",
-		score: 567,
-		id: 3
 	}
 ];
 
@@ -278,7 +268,6 @@ var Application = React.createClass({
 			</div>
 		); // end of return
 	}
-	
 });
 
 ReactDOM.render(<Application initialPlayers={PLAYERS}/>, document.getElementById('container'));
