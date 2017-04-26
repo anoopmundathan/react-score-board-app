@@ -104,6 +104,8 @@ export default class StopWatch extends React.Component {
 			elapsedTime: 0,
 			previousTime: 0
     }
+
+    // Binding pattern
     // this.onStart = this.onStart.bind(this);
     // this.onStop = this.onStop.bind(this);
     // this.onTick = this.onTick.bind(this);
@@ -111,7 +113,7 @@ export default class StopWatch extends React.Component {
   }
 
   // When start button clicked
-  const onStart = () => {
+  onStart() {
     this.setState({
       running: true,
       previousTime: Date.now()
@@ -119,18 +121,16 @@ export default class StopWatch extends React.Component {
   }
 
   // When stop button clicked
-  const onStop = () => {
+  onStop() {
     this.setState({
       running: false
     });
   }
 
   // This runs every 100ms
-  const onTick = () => {
-
+  onTick() {
     if (this.state.running) {
 			var now = Date.now();
-
       // Set new state
 			this.setState({
 				elapsedTime: this.state.elapsedTime + (now - this.state.previousTime),
@@ -140,7 +140,7 @@ export default class StopWatch extends React.Component {
   }
 
   // When reset button clicked
-  const onReset = () => {
+  onReset() {
     this.setState({
 			elapsedTime: 0,
 			previousTime: Date.now()
@@ -149,7 +149,8 @@ export default class StopWatch extends React.Component {
   
   // Component life cycle hooks
   componentDidMount() {
-    this.interval = setInterval(this.onTick, 100);
+    // this.interval = setInterval(this.onTick, 100);
+    this.interval = setInterval(() => this.onTick(), 100);
   }
 
   // Component life cycle hooks
@@ -175,13 +176,13 @@ export default class StopWatch extends React.Component {
 					<div className="stopwatch-start">
 						{
 							this.state.running ?
-							<button onClick={this.onStop}>Stop</button> 
+							<button onClick={ () => this.onStop() }>Stop</button> 
 							: 
-							<button onClick={this.onStart}>Start</button>
+							<button onClick={ () => this.onStart() }>Start</button>
 						}
 					</div>
 					<div className="stopwatch-reset">
-						<button onClick={this.onReset}>Reset</button>
+						<button onClick={ () => this.onReset() }>Reset</button>
 					</div>
 				</div>
 			</div>
@@ -189,3 +190,6 @@ export default class StopWatch extends React.Component {
   } // render
 }
 
+{/*<button onClick={ this.onStop }>Stop</button> */}
+{/*<button onClick={ this.onStart }>Start</button>*/}
+{/*<button onClick={ this.onReset }>Reset</button>*/}
