@@ -1,15 +1,15 @@
 
 module.exports = {
-  entry: './app.js',
+  entry: './index.js',
   output: {
-    filename: 'bundle.js'
+    filename: './bundle.js'
   },
   module: {
     loaders: [
       {
         test: /\.js$/,
         exclude: '/node_modules/',
-        loaders: ['react-hot', 'babel-loader']
+        loader: 'babel-loader'
       },
       {
         test: /\.css$/,

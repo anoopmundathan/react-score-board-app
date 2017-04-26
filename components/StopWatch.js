@@ -1,7 +1,74 @@
 import React from 'react';
 
-export default class StopWatch extends React.Component {
+// StopWatch class component
+/*export default class StopWatch extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      running: false,
+			elapsedTime: 0,
+			previousTime: 0
+    }
+    this.onStart = this.onStart.bind(this);
+    this.onStop = this.onStop.bind(this);
+    this.onTick = this.onTick.bind(this);
+    this.onReset = this.onReset.bind(this);
+  }
+
+  // When start button clicked
+  onStart() {
+    this.setState({
+      running: true,
+      previousTime: Date.now()
+    });
+  }
+
+  // When stop button clicked
+  onStop() {
+    this.setState({
+      running: false
+    });
+  }
+
+  // This runs every 100ms
+  onTick() {
+
+    if (this.state.running) {
+			var now = Date.now();
+
+      // Set new state
+			this.setState({
+				elapsedTime: this.state.elapsedTime + (now - this.state.previousTime),
+				previousTime: now
+			});
+		}
+  }
+
+  // When reset button clicked
+  onReset() {
+    this.setState({
+			elapsedTime: 0,
+			previousTime: Date.now()
+		});
+  }
+  
+  // Component life cycle hooks
+  componentDidMount() {
+    this.interval = setInterval(this.onTick, 100);
+  }
+
+  // Component life cycle hooks
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+  
+  // Render method
   render() {
+    
+    // Calculate seconds
+    let seconds = Math.floor(this.state.elapsedTime/1000);
+
     return(
       <div className="stopwatch-container">
 				<div className="stopwatch-heading">
@@ -25,56 +92,79 @@ export default class StopWatch extends React.Component {
 				</div>
 			</div>
     );
-  }
-}
-// Statefull class componet
-/*var StopWatch = React.createClass({
-	getInitialState: function() {
-		return {
-			running: false,
+  } // render
+}*/
+
+export default class StopWatch extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      running: false,
 			elapsedTime: 0,
 			previousTime: 0
-		}
-	},
-	onStart: function() {
-		this.setState({
-			running: true
-		});
+    }
+    // this.onStart = this.onStart.bind(this);
+    // this.onStop = this.onStop.bind(this);
+    // this.onTick = this.onTick.bind(this);
+    // this.onReset = this.onReset.bind(this);
+  }
 
-		this.setState({
-			previousTime: Date.now()
-		});
-	},
-	onStop: function() {
-		this.setState({
-			running: false
-		});
-	},
-	onTick: function() {
-		if (this.state.running) {
+  // When start button clicked
+  const onStart = () => {
+    this.setState({
+      running: true,
+      previousTime: Date.now()
+    });
+  }
+
+  // When stop button clicked
+  const onStop = () => {
+    this.setState({
+      running: false
+    });
+  }
+
+  // This runs every 100ms
+  const onTick = () => {
+
+    if (this.state.running) {
 			var now = Date.now();
+
+      // Set new state
 			this.setState({
 				elapsedTime: this.state.elapsedTime + (now - this.state.previousTime),
 				previousTime: now
-			})
+			});
 		}
-	},
-	onReset: function() {
-		this.setState({
+  }
+
+  // When reset button clicked
+  const onReset = () => {
+    this.setState({
 			elapsedTime: 0,
 			previousTime: Date.now()
 		});
-	},
-	componentDidMount: function() {
-		this.interval = setInterval(this.onTick, 100);
-	},
-	componentWillUnmount: function() {
-		clearInterval(this.interval);
-	},
-	render: function() {
-		var seconds = Math.floor(this.state.elapsedTime/1000);
-	return(
-			<div className="stopwatch-container">
+  }
+  
+  // Component life cycle hooks
+  componentDidMount() {
+    this.interval = setInterval(this.onTick, 100);
+  }
+
+  // Component life cycle hooks
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+  
+  // Render method
+  render() {
+    
+    // Calculate seconds
+    let seconds = Math.floor(this.state.elapsedTime/1000);
+
+    return(
+      <div className="stopwatch-container">
 				<div className="stopwatch-heading">
 					<span>STOP WATCH</span>
 				</div>
@@ -95,9 +185,7 @@ export default class StopWatch extends React.Component {
 					</div>
 				</div>
 			</div>
+    );
+  } // render
+}
 
-		);
-	}
-});
-
-export default StopWatch;*/

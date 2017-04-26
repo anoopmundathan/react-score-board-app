@@ -69,11 +69,8 @@ import Header from './Header';
 
 class App extends React.Component {
 
-  constructor() {
-    super();
-  }
-
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     this.state = {
       players: this.props.initialPlayers
     }
@@ -82,8 +79,7 @@ class App extends React.Component {
   render() {    
     return(
      <div className="scoreboard">
-       {/*<Header players={this.state.players} title={this.props.title}/>*/}
-       <Header players={this.state.players} />
+       <Header players={this.state.players} title={this.props.title} />
      </div>
     );
   }
