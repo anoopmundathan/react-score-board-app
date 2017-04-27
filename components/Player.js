@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import PlayerScoreBoard from './PlayerScoreBoard';
 
 // Stateless component
 function Player(props) {
@@ -21,9 +24,9 @@ function Player(props) {
 }
 
 Player.propTypes = {
-	name: React.PropTypes.string.isRequired,
-	onScoreChange: React.PropTypes.func.isRequired,
-	onPlayerRemove: React.PropTypes.func.isRequired
+	name: PropTypes.string.isRequired,
+	onScoreChange: PropTypes.func.isRequired,
+	onPlayerRemove: PropTypes.func.isRequired
 }
 
 export default Player;

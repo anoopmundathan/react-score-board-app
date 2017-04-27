@@ -1,11 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class AddPlayerForm extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: ""
+    }
+  }
+
+  onPlayerSubmit(e) {
+    e.preventDefault();
+		this.props.onPlayerAdd(this.state.name);
+		this.setState({
+			name: ""
+		});
+  }
+  
+  onPlayerChange(e) {
+    this.setState({
+			name: e.target.value
+		});
+  }
+  
   render() {
     return(
       <div className="form-container">
-				<form onSubmit={this.onPlayerSubmit}>
-					<input type="text" value={this.state.name} onChange={this.onPlayerChange}/>
+          <form onSubmit={(e) => this.onPlayerSubmit(e)}>
+          <input type="text" value={this.state.name} onChange={(e) => this.onPlayerChange(e)}/>
 					<input type="submit" value="Add Player"/>
 				</form>
 		  </div>
@@ -13,36 +36,9 @@ export default class AddPlayerForm extends React.Component {
   }
 }
 
-/*var AddPlayerForm = React.createClass({
-	propTypes: {
-		onPlayerAdd: React.PropTypes.func.isRequired
-	},
+AddPlayerForm.propTypes = {
+  onPlayerAdd: PropTypes.func.isRequired
+}
 
-	getInitialState: function() {
-		return {
-			name: ""
-		}
-	},
-	onPlayerSubmit: function(e) {
-		e.preventDefault();
-		this.props.onPlayerAdd(this.state.name);
-		this.setState({
-			name: ""
-		});
-	},
-	onPlayerChange: function(e) {
-		this.setState({
-			name: e.target.value
-		});
-	},
-	render: function() {
-		return(
-			<div className="form-container">
-				<form onSubmit={this.onPlayerSubmit}>
-					<input type="text" value={this.state.name} onChange={this.onPlayerChange}/>
-					<input type="submit" value="Add Player"/>
-				</form>
-			</div>
-		);
-	}
-});*/
+{/*<form onSubmit={this.onPlayerSubmit.bind(this)}>*/}
+{/*<input type="text" value={this.state.name} onChange={this.onPlayerChange.bind(this)}/>*/}
