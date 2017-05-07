@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class AddPlayerForm extends React.Component {
+export default class AddPlayerForm extends Component {
 
   constructor(props) {
     super(props);

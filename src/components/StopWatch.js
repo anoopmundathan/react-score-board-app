@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 // StopWatch class component
-export default class StopWatch extends React.Component {
+export default class StopWatch extends Component {
   
   constructor(props) {
     super(props);

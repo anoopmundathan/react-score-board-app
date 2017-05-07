@@ -1,5 +1,5 @@
 // Libs
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // CSS
@@ -12,7 +12,7 @@ import Player from './Player';
 import AddPlayerForm from './AddPlayerForm';
 
 // Statefull class component
-class App extends React.Component {
+class App extends Component {
 
   constructor(props) {
     super(props);
