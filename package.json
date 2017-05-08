@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/webpack",
-    "start": "webpack-dev-server --port 8000 --progress --inline --hot --content-base ./public"
+    "start": "webpack-dev-server --port 8000 --progress --inline --hot --content-base ./public",
+    "now-build": "echo 'BUILD STEP'",
+    "now-start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,7 @@
   },
   "homepage": "https://github.com/anoopmundathan/react-basics#readme",
   "dependencies": {
+    "express": "4.15.2",
     "prop-types": "15.5.8",
     "react": "15.5.4",
     "react-dom": "15.5.4",
