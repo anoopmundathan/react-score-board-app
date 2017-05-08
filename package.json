@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/webpack",
     "start": "webpack-dev-server --port 8000 --progress --inline --hot --content-base ./public",
-    "now-build": "echo 'BUILD STEP'",
+    "now-build": "./node_modules/.bin/webpack -p",
     "now-start": "node server.js"
   },
   "repository": {
