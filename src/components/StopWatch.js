@@ -105,5 +105,8 @@ export default class StopWatch extends Component {
 {/*<button onClick={ this.onStart.bind(this) }>Start</button>*/}
 {/*<button onClick={ this.onReset.bind(this) }>Reset</button>*/}
 
-// Pattern3 
+// Pattern 3 
 // <button onClick={ () => this.onStart() }>Start</button>
+
+// Pattern 4
+//<button onClick={function() { console.log(this)}.bind(this) } >Start</button>
