@@ -78,7 +78,7 @@ App.propTypes = {
 }
 
 App.defaultProps = {
-  title: "ScoreBoard"
+  title: "React - ScoreBoard"
 }
 
 export default App;

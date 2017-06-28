@@ -4,45 +4,91 @@
 
 html,
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
-  font-family: "Helvetica Neue";
+  font: 16px "Helvetica Neue";
+  background: #fff;
   color: #fafafa;
+}
+
+h1,
+h2 {
+  margin: 0;
+  padding: 0;
 }
 
 .scoreboard {
   margin: 50px auto;
   width: 50%;
   text-align: center;
-  background: dodgerblue;
-  border-radius: 3px;
+  background: #58c9b9;
+  border-radius: 5px;
+  box-shadow: 0px 0px 3px rgb(0,0,0,.2);
 }
 
 .heading {
+  width: 100%;
   display: flex;
 }
 
-.title-container {
-  width: 70%;
+.stats-container, 
+.stopwatch-container {
+  padding: 5px;
+  width: 20%;
 }
+.title-container {
+  width: 60%;
+}
+
+.title-container h1{
+  margin-top: 5%;
+}
+
 .stats-container,
 .stopwatch-container {
-  width: 15%;
-  background: firebrick;
+  margin: 5px;
+  background: #e53a40;
+  border-radius: 5px;
 }
 
+.players {
+  width: 100%;
+}
 .player {
-  display: flex;
-  margin: 10px auto;
   width: 90%;
-  border-radius: 5px;
+  margin: 10px auto;
+  display: flex;
+  padding: 3px;
 }
 
 .player-detail {
   width: 80%;
-  background: #000;
+  padding: 3%;
   text-align: left;
   display:flex;
+  background: #56445D;
+}
+
+.player-remove {
+  width: 20%;
+  padding: 10px;
+}
+.player-remove a {
+  text-decoration: none;
+  display: block;
+  color: #0080ff;
+}
+
+.player-name {
+  width: 80%;
+  padding: 10px;
+}
+
+.player-name h1 {
+  margin: 0;
+  padding: 0;
 }
 
 .player-scoreboard {
@@ -50,23 +96,24 @@ body {
   background: skyblue;
 }
 
-
 .player-scoreboard {
+  widows: 100%;
   display: flex;
+  cursor: pointer;
+  justify-content: center;
 }
 
 .player-increment {
-  background: lightgreen;
+  background: #f349eb;
+  width: 33.33%;
 }
 
 .player-decrement {
-  background: firebrick;
+  background: #d81159;
+  width: 33.33%;
 }
-
-.player-increment,
-.player-decrement,
 .player-score {
-  padding: 10px;
+  width: 33.33%;
 }
 
 .players-container {
@@ -82,27 +129,19 @@ body {
   display: flex;
 }
 
-
-
-input[type="text"] {
-  width: 80%;
-  min-height: 40px;  
-}
-
-
-input[type="submit"] {
-width: 20%;
- width: 100px;
- height: 40px;
- background: orange url(image) 0 0 no-repeat; 
-}
-
 .form-container {
   width: 90%;
   margin: 0 auto;
-  text-align: left;
+  margin-bottom: 10px;
+  text-align: center;
 }
-h2, h3 {
-  margin: 0;
-  padding: 0;
+
+input[type="text"] {
+  min-height: 40px;  
+  width: 80%;
+}
+input[type="submit"] {
+ width: 20%;
+ height: 40px;
+ background: orange url(image) 0 0 no-repeat; 
 }

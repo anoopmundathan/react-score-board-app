@@ -6,7 +6,7 @@ import App from './components/App';
 var PLAYERS = [
 	{
 		name: "Anoop",
-		score: 123,
+		score: 5,
 		id: 1
 	}
 ];
